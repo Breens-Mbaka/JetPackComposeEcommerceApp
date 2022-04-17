@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">JetpackComposeEcommerceApp</string>
+    <string name="title_activity_cart">CartActivity</string>
+</resources>
