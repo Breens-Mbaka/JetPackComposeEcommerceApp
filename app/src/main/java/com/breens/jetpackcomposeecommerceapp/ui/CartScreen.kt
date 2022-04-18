@@ -1,8 +1,6 @@
 package com.breens.jetpackcomposeecommerceapp.ui
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -29,37 +27,37 @@ import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorLightGrey
 import com.breens.jetpackcomposeecommerceapp.ui.theme.elmessri
 import com.ramcosta.composedestinations.annotation.Destination
 
-@Preview
-@Composable
 @Destination
+@Composable
 fun CartScreen() {
     Box(
         modifier = Modifier
             .background(Color.White)
             .fillMaxSize()
+            .padding(15.dp)
     ) {
         Column {
+            CartHeaderComponent()
             CartItemList(products = DataProvider.productList)
+            CheckoutComponent()
         }
-
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-fun CartItemList(products: List<Product>) {
-    val productList = remember { products }
-    Column(modifier = Modifier.padding(15.dp)) {
-        Icon(
+fun CartHeaderComponent() {
+    Column(
+        horizontalAlignment = Alignment.Start,
+        verticalArrangement = Arrangement.spacedBy(25.dp)
+    ) {
+        Image(
             painter = painterResource(id = R.drawable.backicon),
-            contentDescription = "Back Icon",
-            modifier = Modifier
-                .align(Alignment.Start)
-                .padding(top = 20.dp)
+            contentDescription =  "Back Icon"
         )
-        Spacer(modifier = Modifier.padding(top = 30.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             Text(
                 text = "My Cart",
@@ -76,6 +74,12 @@ fun CartItemList(products: List<Product>) {
                 color = ColorGrey
             )
         }
+    }
+}
+
+@Composable
+fun CartItemList(products: List<Product>) {
+    val productList = remember { products }
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
@@ -87,8 +91,6 @@ fun CartItemList(products: List<Product>) {
                 )
             }
         }
-        CheckoutComponent()
-    }
 }
 
 @Composable
@@ -96,7 +98,7 @@ fun CartItem(product: Product) {
     var count by remember {
         mutableStateOf(1)
     }
-    Column(modifier = Modifier.padding(bottom = 15.dp)) {
+    Column(modifier = Modifier.padding(bottom = 10.dp)) {
         Box(
             modifier = Modifier
                 .height(100.dp)
@@ -111,9 +113,10 @@ fun CartItem(product: Product) {
                     .fillMaxSize(),
                 contentScale = ContentScale.Fit
             )
-            Box(modifier = Modifier
-                .padding(start = 15.dp, bottom = 15.dp)
-                .align(Alignment.BottomStart)
+            Box(
+                modifier = Modifier
+                    .padding(start = 15.dp, bottom = 15.dp)
+                    .align(Alignment.BottomStart)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,
@@ -144,10 +147,12 @@ fun CartItem(product: Product) {
                     )
                 }
             }
-            Column(modifier = Modifier
-                .padding(end = 15.dp, bottom = 15.dp)
-                .align(Alignment.BottomEnd),
-            verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Column(
+                modifier = Modifier
+                    .padding(end = 15.dp, bottom = 15.dp)
+                    .align(Alignment.BottomEnd),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
                 Box(
                     modifier = Modifier
                         .size(20.dp)
@@ -173,9 +178,10 @@ fun CartItem(product: Product) {
                 )
             }
         }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 10.dp),
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 10.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -188,7 +194,7 @@ fun CartItem(product: Product) {
             )
             Text(
                 text = product.productPrice,
-                fontSize = 20.sp,
+                fontSize = 16.sp,
                 fontFamily = elmessri,
                 fontWeight = FontWeight.Bold,
                 color = ColorBlack
@@ -200,10 +206,11 @@ fun CartItem(product: Product) {
 @Preview
 @Composable
 fun CheckoutComponent() {
-    Column(modifier = Modifier.padding(top = 20.dp)) {
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 10.dp),
+    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 10.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
@@ -223,9 +230,9 @@ fun CheckoutComponent() {
             )
         }
 
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 15.dp),
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {

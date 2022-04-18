@@ -7,8 +7,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,10 +25,10 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.breens.jetpackcomposeecommerceapp.DataProvider
 import com.breens.jetpackcomposeecommerceapp.Product
 import com.breens.jetpackcomposeecommerceapp.R
+import com.breens.jetpackcomposeecommerceapp.ui.destinations.CartScreenDestination
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorBlack
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorGrey
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorLightGrey
@@ -33,10 +36,10 @@ import com.breens.jetpackcomposeecommerceapp.ui.theme.elmessri
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@Composable
 @Destination(start = true)
+@Composable
 fun HomeScreen(
-    navigator: DestinationsNavigator,
+    navigator: DestinationsNavigator
 ) {
     Box(
         modifier = Modifier
@@ -70,9 +73,7 @@ fun ProfileComponent(navigator: DestinationsNavigator) {
                     .padding(end = 20.dp)
                     .size(24.dp)
                     .clickable {
-//                        navigator.navigate(
-//
-//                        )
+                        navigator.navigate(CartScreenDestination)
                     }
             )
             Image(
@@ -102,7 +103,8 @@ fun ProductTitle() {
                 withStyle(
                     style = SpanStyle(
                         color = ColorBlack,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 30.sp
                     )
                 ) {
                     append("New\n")
@@ -110,13 +112,13 @@ fun ProductTitle() {
                 withStyle(
                     style = SpanStyle(
                         color = ColorGrey,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 30.sp
                     )
                 ) {
                     append("Arrivals")
                 }
             },
-            style = MaterialTheme.typography.h4,
             fontFamily = elmessri
         )
         Icon(
@@ -127,7 +129,6 @@ fun ProductTitle() {
                 .size(30.dp)
                 .padding(bottom = 10.dp)
         )
-
     }
 }
 
