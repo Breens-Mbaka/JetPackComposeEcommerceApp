@@ -4,14 +4,14 @@ design by [Sajjad Mohammadi Nia](https://dribbble.com/shots/15673848-E-Commerce-
 
 ## Prerequisite
 ``
-* Jetpack Compose
-* Kotlin
+ Jetpack Compose
+ Kotlin
 ``
 
 ## Screenshots
 ### Splash/Home Screens
-<img src="/images/cartscreenecommerce" width="260">&emsp;
-<img src="/images/homescreenecommerce" width="260">
+<img src="/images/cartscreenecommerce.png" width="260">&emsp;
+<img src="/images/homescreenecommerce.png" width="260">
 
 ## Demo
 https://user-images.githubusercontent.com/72180010/163783707-d4555a8b-f53a-44ef-90a4-bddfeee91626.mp4
