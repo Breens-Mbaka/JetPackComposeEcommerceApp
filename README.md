@@ -3,10 +3,10 @@ This a Jetpack Compose app that replicates of an E-commerce app design I was ins
 design by [Sajjad Mohammadi Nia](https://dribbble.com/shots/15673848-E-Commerce-Clothing-App)
 
 ## Prerequisite
-``
+```
  * Jetpack Compose
  * Kotlin
-``
+```
 
 ## Screenshots
 ### Splash/Home Screens
