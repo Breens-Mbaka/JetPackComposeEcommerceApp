@@ -21,13 +21,14 @@ import androidx.compose.ui.unit.sp
 import com.breens.jetpackcomposeecommerceapp.DataProvider
 import com.breens.jetpackcomposeecommerceapp.Product
 import com.breens.jetpackcomposeecommerceapp.R
+import com.breens.jetpackcomposeecommerceapp.ScreenTransitions
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorBlack
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorGrey
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorLightGrey
 import com.breens.jetpackcomposeecommerceapp.ui.theme.elmessri
 import com.ramcosta.composedestinations.annotation.Destination
 
-@Destination
+@Destination(style = ScreenTransitions::class)
 @Composable
 fun CartScreen() {
     Box(

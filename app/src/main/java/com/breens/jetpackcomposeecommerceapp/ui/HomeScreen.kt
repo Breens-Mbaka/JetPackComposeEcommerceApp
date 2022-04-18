@@ -1,5 +1,6 @@
 package com.breens.jetpackcomposeecommerceapp.ui
 
+import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import com.breens.jetpackcomposeecommerceapp.DataProvider
 import com.breens.jetpackcomposeecommerceapp.Product
 import com.breens.jetpackcomposeecommerceapp.R
+import com.breens.jetpackcomposeecommerceapp.ScreenTransitions
 import com.breens.jetpackcomposeecommerceapp.ui.destinations.CartScreenDestination
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorBlack
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorGrey
@@ -36,7 +38,7 @@ import com.breens.jetpackcomposeecommerceapp.ui.theme.elmessri
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@Destination(start = true)
+@Destination(start = true, style = ScreenTransitions::class)
 @Composable
 fun HomeScreen(
     navigator: DestinationsNavigator
