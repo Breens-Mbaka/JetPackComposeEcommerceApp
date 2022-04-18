@@ -4,8 +4,8 @@ design by [Sajjad Mohammadi Nia](https://dribbble.com/shots/15673848-E-Commerce-
 
 ## Prerequisite
 ``
- Jetpack Compose
- Kotlin
+ * Jetpack Compose
+ * Kotlin
 ``
 
 ## Screenshots
