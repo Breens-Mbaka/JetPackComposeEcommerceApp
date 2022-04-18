@@ -1,6 +1,8 @@
 package com.breens.jetpackcomposeecommerceapp.ui
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -22,15 +24,19 @@ import com.breens.jetpackcomposeecommerceapp.DataProvider
 import com.breens.jetpackcomposeecommerceapp.Product
 import com.breens.jetpackcomposeecommerceapp.R
 import com.breens.jetpackcomposeecommerceapp.ScreenTransitions
+import com.breens.jetpackcomposeecommerceapp.ui.destinations.HomeScreenDestination
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorBlack
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorGrey
 import com.breens.jetpackcomposeecommerceapp.ui.theme.ColorLightGrey
 import com.breens.jetpackcomposeecommerceapp.ui.theme.elmessri
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination(style = ScreenTransitions::class)
 @Composable
-fun CartScreen() {
+fun CartScreen(
+    navigator: DestinationsNavigator
+) {
     Box(
         modifier = Modifier
             .background(Color.White)
@@ -38,7 +44,7 @@ fun CartScreen() {
             .padding(15.dp)
     ) {
         Column {
-            CartHeaderComponent()
+            CartHeaderComponent(navigator)
             CartItemList(products = DataProvider.productList)
             CheckoutComponent()
         }
@@ -47,14 +53,18 @@ fun CartScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun CartHeaderComponent() {
+fun CartHeaderComponent(navigator: DestinationsNavigator) {
     Column(
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.spacedBy(25.dp)
     ) {
         Image(
             painter = painterResource(id = R.drawable.backicon),
-            contentDescription =  "Back Icon"
+            contentDescription = "Back Icon",
+            modifier = Modifier
+                .clickable(enabled = true) {
+                    navigator.navigate(HomeScreenDestination)
+                }
         )
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -81,17 +91,17 @@ fun CartHeaderComponent() {
 @Composable
 fun CartItemList(products: List<Product>) {
     val productList = remember { products }
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 15.dp)
-        ) {
-            items(productList.size) {
-                CartItem(
-                    product = products[it]
-                )
-            }
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 15.dp)
+    ) {
+        items(productList.size) {
+            CartItem(
+                product = products[it]
+            )
         }
+    }
 }
 
 @Composable

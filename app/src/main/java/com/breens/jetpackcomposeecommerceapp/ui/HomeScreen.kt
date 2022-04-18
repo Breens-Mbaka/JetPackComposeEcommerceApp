@@ -1,6 +1,5 @@
 package com.breens.jetpackcomposeecommerceapp.ui
 
-import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -74,12 +73,12 @@ fun ProfileComponent(navigator: DestinationsNavigator) {
                 modifier = Modifier
                     .padding(end = 20.dp)
                     .size(24.dp)
-                    .clickable {
+                    .clickable(enabled = true) {
                         navigator.navigate(CartScreenDestination)
                     }
             )
             Image(
-                painter = painterResource(R.drawable.product2),
+                painter = painterResource(R.drawable.profileimage),
                 contentDescription = "Profile Image",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
